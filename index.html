@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>求人監視ダッシュボード</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --surface-2: #f2f1ed;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --border: rgba(11,11,11,0.10);
+    --gridline: #e1e0d9;
+    --accent: #2a78d6;
+    --accent-2: #1c5cab;
+    --good: #0ca30c;
+    --warning: #fab219;
+    --critical: #d03b3b;
+    --good-bg: #e7f6e7;
+    --critical-bg: #fbeaea;
+    --accent-bg: #e8f0fb;
+    --muted-bg: #f0efec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface: #1a1a19;
+      --surface-2: #232322;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --border: rgba(255,255,255,0.10);
+      --gridline: #2c2c2a;
+      --accent: #3987e5;
+      --accent-2: #86b6ef;
+      --good: #0ca30c;
+      --warning: #fab219;
+      --critical: #e66767;
+      --good-bg: rgba(12,163,12,0.16);
+      --critical-bg: rgba(230,103,103,0.16);
+      --accent-bg: rgba(57,135,229,0.16);
+      --muted-bg: rgba(255,255,255,0.06);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.5;
+  }
+  a { color: var(--accent); }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+  }
+
+  header.page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .generated-at {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .stat-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat-tile .value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-tile .label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .controls input[type="search"] {
+    flex: 1 1 200px;
+    min-width: 160px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+  }
+  .chip-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 0.82rem;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  label.toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  section.category {
+    margin-bottom: 28px;
+  }
+  .category-title {
+    font-size: 1.05rem;
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gridline);
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .card-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .card-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .card-title a:hover {
+    text-decoration: underline;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge.ok { background: var(--good-bg); color: var(--good); }
+  .badge.error { background: var(--critical-bg); color: var(--critical); }
+  .badge.unchecked { background: var(--muted-bg); color: var(--text-muted); }
+  .badge.changed { background: var(--accent-bg); color: var(--accent-2); }
+
+  .card-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+  .card-meta div { margin-bottom: 2px; }
+  .card-error {
+    font-size: 0.78rem;
+    color: var(--critical);
+    word-break: break-word;
+  }
+
+  .empty-state, .fetch-error {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+  .fetch-error code {
+    background: var(--surface-2);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  footer.page-footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--gridline);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>求人監視ダッシュボード</h1>
+    <div class="generated-at" id="generated-at">読み込み中…</div>
+  </header>
+
+  <div class="stat-tiles" id="stat-tiles"></div>
+
+  <div class="controls">
+    <input type="search" id="search-input" placeholder="サイト名で検索…" aria-label="サイト名で検索">
+    <div class="chip-row" id="category-filter"></div>
+    <label class="toggle">
+      <input type="checkbox" id="changed-only">
+      更新ありのみ表示
+    </label>
+  </div>
+
+  <div id="content">
+    <div class="empty-state">読み込み中…</div>
+  </div>
+
+  <footer class="page-footer">
+    <div>データは <code>data/state.json</code> を <code>scripts/check.mjs</code>（GitHub Actions で定期実行）が更新します。サイトの追加・削除は <code>config/sites.json</code> を編集してください。詳細は README を参照。</div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  const RECENT_CHANGE_DAYS = 14;
+  const STATE_URL = "./data/state.json";
+
+  const state = {
+    sites: [],
+    categories: [],
+    activeCategory: "all",
+    query: "",
+    changedOnly: false,
+  };
+
+  function formatDateTime(iso) {
+    if (!iso) return "-";
+    const d = new Date(iso);
+    return d.toLocaleString("ja-JP", {
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit",
+    });
+  }
+
+  function formatRelative(iso) {
+    if (!iso) return null;
+    const diffMs = Date.now() - new Date(iso).getTime();
+    const diffMin = Math.floor(diffMs / 60000);
+    if (diffMin < 1) return "たった今";
+    if (diffMin < 60) return `${diffMin}分前`;
+    const diffHour = Math.floor(diffMin / 60);
+    if (diffHour < 24) return `${diffHour}時間前`;
+    const diffDay = Math.floor(diffHour / 24);
+    if (diffDay < 30) return `${diffDay}日前`;
+    const diffMonth = Math.floor(diffDay / 30);
+    return `${diffMonth}ヶ月前`;
+  }
+
+  function isRecentlyChanged(site) {
+    if (!site.lastChangedAt) return false;
+    const days = (Date.now() - new Date(site.lastChangedAt).getTime()) / 86400000;
+    return days <= RECENT_CHANGE_DAYS;
+  }
+
+  function statusOf(site) {
+    if (!site.lastCheckedAt) return "unchecked";
+    if (!site.ok) return "error";
+    return "ok";
+  }
+
+  function renderStatTiles(sites) {
+    const total = sites.length;
+    const checked = sites.filter((s) => s.lastCheckedAt).length;
+    const errors = sites.filter((s) => statusOf(s) === "error").length;
+    const changed = sites.filter(isRecentlyChanged).length;
+
+    const tiles = [
+      { label: "監視対象サイト", value: total },
+      { label: "チェック済み", value: checked },
+      { label: "エラー", value: errors },
+      { label: `更新あり（${RECENT_CHANGE_DAYS}日以内）`, value: changed },
+    ];
+
+    const el = document.getElementById("stat-tiles");
+    el.innerHTML = "";
+    for (const t of tiles) {
+      const div = document.createElement("div");
+      div.className = "stat-tile";
+      div.innerHTML = `<div class="value">${t.value}</div><div class="label">${t.label}</div>`;
+      el.appendChild(div);
+    }
+  }
+
+  function renderCategoryFilter(categories) {
+    const el = document.getElementById("category-filter");
+    el.innerHTML = "";
+
+    const makeChip = (id, label) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "chip";
+      btn.textContent = label;
+      btn.setAttribute("aria-pressed", String(state.activeCategory === id));
+      btn.addEventListener("click", () => {
+        state.activeCategory = id;
+        renderAll();
+      });
+      return btn;
+    };
+
+    el.appendChild(makeChip("all", "すべて"));
+    for (const c of categories) {
+      el.appendChild(makeChip(c.id, c.name));
+    }
+  }
+
+  function badgeHtml(site) {
+    const status = statusOf(site);
+    const badges = [];
+    if (status === "unchecked") {
+      badges.push('<span class="badge unchecked">未チェック</span>');
+    } else if (status === "error") {
+      badges.push('<span class="badge error">⚠ エラー</span>');
+    } else {
+      badges.push('<span class="badge ok">✓ 稼働中</span>');
+    }
+    if (isRecentlyChanged(site)) {
+      badges.push('<span class="badge changed">● 更新あり</span>');
+    }
+    return badges.join("");
+  }
+
+  function cardHtml(site) {
+    const relChanged = formatRelative(site.lastChangedAt);
+    const relChecked = formatRelative(site.lastCheckedAt);
+    return `
+      <article class="card">
+        <div class="card-top">
+          <div class="card-title"><a href="${site.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(site.name)}</a></div>
+        </div>
+        <div class="badges">${badgeHtml(site)}</div>
+        <div class="card-meta">
+          <div>最終チェック: ${relChecked ? `${relChecked}（${formatDateTime(site.lastCheckedAt)}）` : "未実施"}</div>
+          <div>最終更新検知: ${site.lastChangedAt ? `${formatRelative(site.lastChangedAt)}（${formatDateTime(site.lastChangedAt)}）` : "-"}</div>
+        </div>
+        ${site.lastError ? `<div class="card-error">${escapeHtml(site.lastError)}</div>` : ""}
+      </article>
+    `;
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[c]));
+  }
+
+  function renderContent() {
+    const el = document.getElementById("content");
+    const q = state.query.trim().toLowerCase();
+
+    const categories = state.categories.filter(
+      (c) => state.activeCategory === "all" || c.id === state.activeCategory
+    );
+
+    let anyVisible = false;
+    const sections = [];
+
+    for (const category of categories) {
+      const sites = category.sites.filter((site) => {
+        if (q && !site.name.toLowerCase().includes(q)) return false;
+        if (state.changedOnly && !isRecentlyChanged(site)) return false;
+        return true;
+      });
+      if (sites.length === 0) continue;
+      anyVisible = true;
+      sections.push(`
+        <section class="category">
+          <h2 class="category-title">${escapeHtml(category.name)}</h2>
+          <div class="card-grid">${sites.map(cardHtml).join("")}</div>
+        </section>
+      `);
+    }
+
+    el.innerHTML = anyVisible
+      ? sections.join("")
+      : '<div class="empty-state">条件に一致するサイトがありません。</div>';
+  }
+
+  function renderAll() {
+    renderCategoryFilter(state.categories);
+    renderContent();
+  }
+
+  function groupByCategory(data) {
+    const map = new Map();
+    for (const site of Object.values(data.sites || {})) {
+      if (!map.has(site.categoryId)) {
+        map.set(site.categoryId, { id: site.categoryId, name: site.categoryName, sites: [] });
+      }
+      map.get(site.categoryId).sites.push(site);
+    }
+    for (const c of map.values()) {
+      c.sites.sort((a, b) => a.name.localeCompare(b.name, "ja"));
+    }
+    return Array.from(map.values());
+  }
+
+  async function load() {
+    let res;
+    try {
+      res = await fetch(STATE_URL, { cache: "no-store" });
+    } catch (err) {
+      showFetchError();
+      return;
+    }
+    if (!res.ok) {
+      showFetchError();
+      return;
+    }
+    const data = await res.json();
+
+    state.sites = Object.values(data.sites || {});
+    state.categories = groupByCategory(data);
+
+    document.getElementById("generated-at").textContent = data.generatedAt
+      ? `データ更新: ${formatDateTime(data.generatedAt)}`
+      : "データ更新: まだチェックが実行されていません";
+
+    renderStatTiles(state.sites);
+    renderAll();
+
+    document.getElementById("search-input").addEventListener("input", (e) => {
+      state.query = e.target.value;
+      renderContent();
+    });
+    document.getElementById("changed-only").addEventListener("change", (e) => {
+      state.changedOnly = e.target.checked;
+      renderContent();
+    });
+  }
+
+  function showFetchError() {
+    document.getElementById("generated-at").textContent = "";
+    document.getElementById("content").innerHTML = `
+      <div class="fetch-error">
+        <p><strong>data/state.json を読み込めませんでした。</strong></p>
+        <p>ローカルで <code>file://</code> から直接開いている場合、ブラウザのセキュリティ制限により
+        JSON を取得できないことがあります。<code>python3 -m http.server</code> などで簡易サーバーを
+        起動して開くか、GitHub Pages 等で配信してください。</p>
+      </div>
+    `;
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

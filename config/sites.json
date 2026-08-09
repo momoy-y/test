@@ -1,0 +1,52 @@
+{
+  "$schema": "サイトを追加する場合は categories[].sites[] に { id, name, url } を追加するだけでOK。id は一度決めたら変更しない（変更すると監視履歴が途切れます）",
+  "categories": [
+    {
+      "id": "education",
+      "name": "教育",
+      "sites": [
+        {
+          "id": "chiyoda-hijokin",
+          "name": "千代田区 会計年度任用職員（非常勤）募集",
+          "url": "https://www.city.chiyoda.lg.jp/koho/kuse/jinji/boshu/hijokin/index.html"
+        },
+        {
+          "id": "chuo-kyosensaiyou",
+          "name": "中央区 教育委員会 教員採用情報",
+          "url": "https://www.city.chuo.lg.jp/a0051/kosodate/gakkoukyouiku/kyouikuiinkai/kyosensaiyou.html"
+        },
+        {
+          "id": "minato-kaininsaiyou2026",
+          "name": "港区 教職員人事 会計年度任用職員採用（2026）",
+          "url": "https://www.city.minato.tokyo.jp/kyoushokuinjinji/kaininsaiyou2026.html"
+        },
+        {
+          "id": "shinjuku-kyoshien01",
+          "name": "新宿区 子ども家庭部 職員募集",
+          "url": "https://www.city.shinjuku.lg.jp/kodomo/kyoshien01_001020_00028.html"
+        },
+        {
+          "id": "shinjuku-ed-center-a",
+          "name": "新宿区立学校（center-a）求人情報",
+          "url": "https://www.shinjuku.ed.jp/~center-a/kyujin.html"
+        },
+        {
+          "id": "bunkyo-kyouikucenter-boshuu",
+          "name": "文京区教育センター 職員募集",
+          "url": "https://www.city.bunkyo.lg.jp/kosodatekyouiku/kyouiku/kyouikucenter/shokuinboshuu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "medical",
+      "name": "医療",
+      "sites": [
+        {
+          "id": "tokyo-hanaclinic-staff",
+          "name": "東京ハナクリニック 医師・スタッフ紹介（採用情報）",
+          "url": "https://tokyo-hanaclinic.com/%E5%8C%BB%E5%B8%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E7%B4%B9%E4%BB%8B-2-3-2"
+        }
+      ]
+    }
+  ]
+}

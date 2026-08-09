@@ -1,0 +1,52 @@
+name: Job Monitor Check
+
+on:
+  schedule:
+    # 6時間ごと（UTC基準）に監視対象サイトをチェックする。
+    # 頻度を変えたい場合はこの cron 式を編集する。
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - 'config/sites.json'
+      - 'scripts/**'
+      - '.github/workflows/monitor.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: job-monitor-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 監視対象サイトをチェック
+        env:
+          # Slack通知を有効にする場合は Secrets に SLACK_WEBHOOK_URL を設定する。
+          # 未設定の場合、Slack通知は自動的にスキップされる（scripts/notify.mjs参照）。
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: node scripts/check.mjs
+
+      - name: 変更をコミット・プッシュ
+        run: |
+          git config user.name "job-monitor-bot"
+          git config user.email "job-monitor-bot@users.noreply.github.com"
+          git add data/state.json data/history.json
+          if git diff --cached --quiet; then
+            echo "変更なし。コミットをスキップします。"
+          else
+            git commit -m "chore: update monitoring data [skip ci]"
+            git push
+          fi
