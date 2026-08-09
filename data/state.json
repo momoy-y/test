@@ -1,5 +1,5 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-08-09T02:03:18.737Z",
   "sites": {
     "chiyoda-hijokin": {
       "id": "chiyoda-hijokin",
@@ -7,15 +7,15 @@
       "url": "https://www.city.chiyoda.lg.jp/koho/kuse/jinji/boshu/hijokin/index.html",
       "categoryId": "education",
       "categoryName": "教育",
-      "ok": null,
-      "httpStatus": null,
-      "title": null,
-      "contentHash": null,
-      "firstCheckedAt": null,
-      "lastCheckedAt": null,
+      "ok": true,
+      "httpStatus": 200,
+      "title": "千代田区ホームページ - 会計年度任用職員（非常勤職員）・臨時的任用職員等の募集",
+      "contentHash": "c299f7ff47c2b375c4263fc3d36310b084473ba5f0461c2a8be7c59e90e9a663",
+      "firstCheckedAt": "2026-08-09T02:03:18.737Z",
+      "lastCheckedAt": "2026-08-09T02:03:18.737Z",
       "lastChangedAt": null,
       "lastError": null,
-      "checkCount": 0
+      "checkCount": 1
     },
     "chuo-kyosensaiyou": {
       "id": "chuo-kyosensaiyou",
@@ -23,15 +23,15 @@
       "url": "https://www.city.chuo.lg.jp/a0051/kosodate/gakkoukyouiku/kyouikuiinkai/kyosensaiyou.html",
       "categoryId": "education",
       "categoryName": "教育",
-      "ok": null,
-      "httpStatus": null,
-      "title": null,
-      "contentHash": null,
-      "firstCheckedAt": null,
-      "lastCheckedAt": null,
+      "ok": true,
+      "httpStatus": 200,
+      "title": "中央区ホームページ／教育センター職員採用情報（会計年度任用職員）",
+      "contentHash": "1200a360dbe098d4c85bcaea3ea2b5361492a8d9fdff33e5dfd59a559eab05ad",
+      "firstCheckedAt": "2026-08-09T02:03:18.737Z",
+      "lastCheckedAt": "2026-08-09T02:03:18.737Z",
       "lastChangedAt": null,
       "lastError": null,
-      "checkCount": 0
+      "checkCount": 1
     },
     "minato-kaininsaiyou2026": {
       "id": "minato-kaininsaiyou2026",
@@ -39,15 +39,15 @@
       "url": "https://www.city.minato.tokyo.jp/kyoushokuinjinji/kaininsaiyou2026.html",
       "categoryId": "education",
       "categoryName": "教育",
-      "ok": null,
-      "httpStatus": null,
-      "title": null,
-      "contentHash": null,
-      "firstCheckedAt": null,
-      "lastCheckedAt": null,
+      "ok": true,
+      "httpStatus": 200,
+      "title": "港区ホームページ／令和8年度幼稚園、小・中学校の会計年度任用職員（会計年度任用講師を含む）募集",
+      "contentHash": "afb8d208cffaa24b267d59558e7f850da9382d7e6248c4286cf44e8a4d589420",
+      "firstCheckedAt": "2026-08-09T02:03:18.737Z",
+      "lastCheckedAt": "2026-08-09T02:03:18.737Z",
       "lastChangedAt": null,
       "lastError": null,
-      "checkCount": 0
+      "checkCount": 1
     },
     "shinjuku-kyoshien01": {
       "id": "shinjuku-kyoshien01",
@@ -55,15 +55,15 @@
       "url": "https://www.city.shinjuku.lg.jp/kodomo/kyoshien01_001020_00028.html",
       "categoryId": "education",
       "categoryName": "教育",
-      "ok": null,
-      "httpStatus": null,
-      "title": null,
-      "contentHash": null,
-      "firstCheckedAt": null,
-      "lastCheckedAt": null,
+      "ok": true,
+      "httpStatus": 200,
+      "title": "【令和8年度】 特別支援教育推進員（会計年度任用職員）を募集します（令和8年10月1日付採用）：新宿区",
+      "contentHash": "d4a929b8a50b6d1189c6bafc5e8958d9938612566d13b31a20c9ef5d52531489",
+      "firstCheckedAt": "2026-08-09T02:03:18.737Z",
+      "lastCheckedAt": "2026-08-09T02:03:18.737Z",
       "lastChangedAt": null,
       "lastError": null,
-      "checkCount": 0
+      "checkCount": 1
     },
     "shinjuku-ed-center-a": {
       "id": "shinjuku-ed-center-a",
@@ -71,15 +71,15 @@
       "url": "https://www.shinjuku.ed.jp/~center-a/kyujin.html",
       "categoryId": "education",
       "categoryName": "教育",
-      "ok": null,
-      "httpStatus": null,
-      "title": null,
-      "contentHash": null,
-      "firstCheckedAt": null,
-      "lastCheckedAt": null,
+      "ok": true,
+      "httpStatus": 200,
+      "title": "求人案内",
+      "contentHash": "9a395a7cb6ff056ed1f8cd09eaa2d1ee5177148278bedf024dc23f8f63ac6935",
+      "firstCheckedAt": "2026-08-09T02:03:18.737Z",
+      "lastCheckedAt": "2026-08-09T02:03:18.737Z",
       "lastChangedAt": null,
       "lastError": null,
-      "checkCount": 0
+      "checkCount": 1
     },
     "bunkyo-kyouikucenter-boshuu": {
       "id": "bunkyo-kyouikucenter-boshuu",
@@ -87,15 +87,15 @@
       "url": "https://www.city.bunkyo.lg.jp/kosodatekyouiku/kyouiku/kyouikucenter/shokuinboshuu/index.html",
       "categoryId": "education",
       "categoryName": "教育",
-      "ok": null,
-      "httpStatus": null,
-      "title": null,
-      "contentHash": null,
-      "firstCheckedAt": null,
-      "lastCheckedAt": null,
+      "ok": true,
+      "httpStatus": 200,
+      "title": "職員募集 | 文京区",
+      "contentHash": "6e48e8709b5a2aae757c40b5ad1b8de8a89b727009fbf9072a532fdc2eb20b22",
+      "firstCheckedAt": "2026-08-09T02:03:18.737Z",
+      "lastCheckedAt": "2026-08-09T02:03:18.737Z",
       "lastChangedAt": null,
       "lastError": null,
-      "checkCount": 0
+      "checkCount": 1
     },
     "tokyo-hanaclinic-staff": {
       "id": "tokyo-hanaclinic-staff",
@@ -103,15 +103,15 @@
       "url": "https://tokyo-hanaclinic.com/%E5%8C%BB%E5%B8%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E7%B4%B9%E4%BB%8B-2-3-2",
       "categoryId": "medical",
       "categoryName": "医療",
-      "ok": null,
-      "httpStatus": null,
-      "title": null,
-      "contentHash": null,
-      "firstCheckedAt": null,
-      "lastCheckedAt": null,
+      "ok": true,
+      "httpStatus": 200,
+      "title": "カウンセラー紹介 | 東京はなクリニック 渋谷区恵比寿・心療内科精神科",
+      "contentHash": "d39dbb811dad8636eac29a6050b2c13c9d2134283a729820c1c96916fb7a0018",
+      "firstCheckedAt": "2026-08-09T02:03:18.737Z",
+      "lastCheckedAt": "2026-08-09T02:03:18.737Z",
       "lastChangedAt": null,
       "lastError": null,
-      "checkCount": 0
+      "checkCount": 1
     }
   }
 }
