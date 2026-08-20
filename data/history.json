@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "jacdp-job",
+      "name": "日本臨床発達心理士会 求人情報",
+      "category": "ポータルサイト",
+      "url": "https://jacdp.jp/category/job/",
+      "changedAt": "2026-08-20T08:03:14.117Z"
+    },
+    {
       "siteId": "minato-kaininsaiyou2026",
       "name": "港区 教職員人事 会計年度任用職員採用（2026）",
       "category": "教育",
