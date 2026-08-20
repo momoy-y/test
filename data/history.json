@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "koto-shokuinsaiyo-kaikei2",
+      "name": "江東区 会計年度任用職員 募集",
+      "category": "教育",
+      "url": "https://www.city.koto.lg.jp/kuse/shokuinsaiyo/kaikei2/index.html",
+      "changedAt": "2026-08-20T14:08:44.637Z"
+    },
+    {
       "siteId": "jacdp-job",
       "name": "日本臨床発達心理士会 求人情報",
       "category": "ポータルサイト",
