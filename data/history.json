@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "minato-kaininsaiyou2026",
+      "name": "港区 教職員人事 会計年度任用職員採用（2026）",
+      "category": "教育",
+      "url": "https://www.city.minato.tokyo.jp/kyoushokuinjinji/kaininsaiyou2026.html",
+      "changedAt": "2026-08-31T00:01:58.523Z"
+    },
+    {
       "siteId": "koto-shokuinsaiyo-kaikei2",
       "name": "江東区 会計年度任用職員 募集",
       "category": "教育",
