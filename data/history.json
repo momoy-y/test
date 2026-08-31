@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "shinjuku-kyoshien01",
+      "name": "新宿区 子ども家庭部 職員募集",
+      "category": "教育",
+      "url": "https://www.city.shinjuku.lg.jp/kodomo/kyoshien01_001020_00028.html",
+      "changedAt": "2026-08-31T18:02:12.337Z"
+    },
+    {
       "siteId": "koto-shokuinsaiyo-kaikei2",
       "name": "江東区 会計年度任用職員 募集",
       "category": "教育",
