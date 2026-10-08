@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "chuo-kyosensaiyou",
+      "name": "中央区 教育委員会 教員採用情報",
+      "category": "教育",
+      "url": "https://www.city.chuo.lg.jp/a0051/kosodate/gakkoukyouiku/kyouikuiinkai/kyosensaiyou.html",
+      "changedAt": "2026-10-08T12:24:13.222Z"
+    },
+    {
       "siteId": "minato-kaininsaiyou2026",
       "name": "港区 教職員人事 会計年度任用職員採用（2026）",
       "category": "教育",
