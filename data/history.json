@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "tokyo-esodan-kyouikucenter",
+      "name": "★東京都教育センター一覧",
+      "category": "教育",
+      "url": "https://e-sodan.metro.tokyo.lg.jp/links/row.html",
+      "changedAt": "2026-10-24T02:20:47.495Z"
+    },
+    {
       "siteId": "minato-kaininsaiyou2026",
       "name": "港区 教職員人事 会計年度任用職員採用（2026）",
       "category": "教育",
