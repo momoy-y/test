@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "jocdp-job",
+      "name": "臨床発達心理士 求人情報",
+      "category": "ポータルサイト",
+      "url": "https://www.jocdp.jp/qualifier/job/",
+      "changedAt": "2026-10-28T11:46:43.815Z"
+    },
+    {
       "siteId": "bunkyo-kyouikucenter-boshuu",
       "name": "文京区教育センター 職員募集",
       "category": "教育",
