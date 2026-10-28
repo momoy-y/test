@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "bunkyo-kyouikucenter-boshuu",
+      "name": "文京区教育センター 職員募集",
+      "category": "教育",
+      "url": "https://www.city.bunkyo.lg.jp/kosodatekyouiku/kyouiku/kyouikucenter/shokuinboshuu/index.html",
+      "changedAt": "2026-10-28T02:54:23.747Z"
+    },
+    {
       "siteId": "tokyo-hanaclinic-staff",
       "name": "東京ハナクリニック 医師・スタッフ紹介（採用情報）",
       "category": "医療",
