@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "siteId": "jocdp-job",
+      "name": "臨床発達心理士 求人情報",
+      "category": "ポータルサイト",
+      "url": "https://www.jocdp.jp/qualifier/job/",
+      "changedAt": "2026-11-09T03:29:24.329Z"
+    },
+    {
       "siteId": "jacdp-job",
       "name": "日本臨床発達心理士会 求人情報",
       "category": "ポータルサイト",
